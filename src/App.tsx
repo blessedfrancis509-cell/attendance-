@@ -792,7 +792,7 @@ export default function App() {
             </span>
             <div>
               <span className="text-[9px] font-black text-yellow-600 uppercase tracking-widest font-mono">Auchi Polytechnic</span>
-              <h1 className="text-lg font-black text-yellow-950 leading-none">Class Flow Roll</h1>
+              <h1 className="text-lg font-black text-yellow-950 leading-none">Auchi Poly Class Flow</h1>
             </div>
           </div>
 
@@ -1427,7 +1427,7 @@ export default function App() {
       {/* Exquisite humbler footer containing system telemetry notes */}
       <footer className="border-t border-stone-150 py-8 bg-white/50 text-center">
         <p className="text-[11px] text-stone-400 font-medium">
-          Class Flow Roll • Desktop-perfect and fully mobile adaptive attendance tracker.
+          Auchi Poly Class Flow • Desktop-perfect and fully mobile adaptive attendance tracker.
         </p>
       </footer>
     </div>

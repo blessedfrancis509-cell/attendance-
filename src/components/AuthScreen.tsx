@@ -190,10 +190,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
       <div className="flex-none pt-12 pb-6 px-6 flex flex-col items-center text-center animate-fade-in relative z-10">
         <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute top-20 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-[80px] pointer-events-none" />
-        <div className="p-4 bg-white/10 backdrop-blur-xl border border-white/10 rounded-[2rem] text-yellow-50 shadow-[0_0_40px_rgba(79,70,229,0.3)] mb-4">
-          <BookOpenCheck className="w-10 h-10" />
+        <div className="mb-4">
+          <img src="/icon.png" alt="Auchi Poly Logo" className="w-24 h-24 object-contain drop-shadow-xl" />
         </div>
-        <h1 className="text-3xl font-black text-white mb-2 font-mono uppercase tracking-wider">Class Flow Roll</h1>
+        <h1 className="text-3xl font-black text-white mb-2 font-mono uppercase tracking-wider">Auchi Poly Class Flow</h1>
         <p className="text-yellow-200 text-sm max-w-[280px] font-medium opacity-90 drop-shadow">
           Your smart lecture & live attendance workspace.
         </p>
