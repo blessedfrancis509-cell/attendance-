@@ -174,7 +174,7 @@ export default function App() {
       courseName: `${session.courseCode} • ${session.courseName}`
     };
   };
-  const [activeTab, setActiveTab] = useState<'courses' | 'schedule' | 'students'>('courses');
+  const [activeTab, setActiveTab] = useState<'courses' | 'schedule' | 'students' | 'ai'>('courses');
   
   // Authenticated state configurations
   const [currentUser, setCurrentUser] = useState<AppUser | null>(() => {
