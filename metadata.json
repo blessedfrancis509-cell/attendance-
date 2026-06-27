@@ -1,0 +1,6 @@
+{
+  "name": "Class Attendance & Schedule Tracker",
+  "description": "A mobile-adaptable application for instructors and students to track daily attendance, view course codes, schedules, and monitor learning progress.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
