@@ -172,12 +172,14 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
 
   if (showSplash) {
     return (
-      <div className="fixed inset-0 bg-yellow-950 flex flex-col items-center justify-center z-50 touch-none">
-        <div className="flex flex-col items-center gap-6 animate-pulse">
+      <div className="fixed inset-0 flex flex-col items-center justify-center z-50 touch-none" style={{ background: 'linear-gradient(-45deg, #422006, #713f12, #422006)', backgroundSize: '200% 200%', animation: 'gradient-shift 4s ease infinite' }}>
+        <div className="flex flex-col items-center gap-6 animate-pulse-glow">
           <div className="p-6 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20">
-            <BookOpenCheck className="w-16 h-16 text-white drop-shadow-lg" />
+            <img src="/icon.png" alt="Auchi Poly Logo" className="w-20 h-20 object-contain drop-shadow-[0_0_20px_rgba(250,204,21,0.5)] animate-float" />
           </div>
-          <h1 className="text-4xl font-black text-white tracking-widest uppercase font-mono drop-shadow-md">Flow Roll</h1>
+          <h1 className="text-2xl font-black text-yellow-400 tracking-widest uppercase font-mono drop-shadow-md animate-fade-in text-center max-w-[250px] leading-relaxed">
+            Auchi Poly<br/>Class Flow
+          </h1>
         </div>
       </div>
     );
@@ -188,10 +190,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
       
       {/* Brand Header */}
       <div className="flex-none pt-12 pb-6 px-6 flex flex-col items-center text-center animate-fade-in relative z-10">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute top-20 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-[80px] pointer-events-none" />
-        <div className="mb-4">
-          <img src="/icon.png" alt="Auchi Poly Logo" className="w-24 h-24 object-contain drop-shadow-xl" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none animate-pulse-glow" />
+        <div className="absolute top-20 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-[80px] pointer-events-none animate-float" />
+        <div className="mb-4 animate-float" style={{ animationDelay: '1s' }}>
+          <img src="/icon.png" alt="Auchi Poly Logo" className="w-24 h-24 object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.6)]" />
         </div>
         <h1 className="text-3xl font-black text-white mb-2 font-mono uppercase tracking-wider">Auchi Poly Class Flow</h1>
         <p className="text-yellow-200 text-sm max-w-[280px] font-medium opacity-90 drop-shadow">
@@ -344,7 +346,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-4 bg-yellow-900 hover:bg-black text-white font-black rounded-2xl text-[14px] uppercase tracking-widest shadow-xl shadow-yellow-900/20 transition-all focus:outline-hidden active:scale-[0.98] cursor-pointer"
+              className="w-full bg-yellow-gradient hover:opacity-90 font-black text-yellow-950 rounded-2xl py-4 shadow-[0_0_20px_rgba(250,204,21,0.4)] hover:shadow-[0_0_35px_rgba(250,204,21,0.6)] transition-all active:scale-95 flex items-center justify-center gap-2 mt-4 text-[14px] uppercase tracking-widest cursor-pointer"
             >
               {isSignUp ? 'Create Profile' : 'Secure Sign In'}
             </button>

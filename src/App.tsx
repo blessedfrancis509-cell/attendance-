@@ -232,7 +232,6 @@ export default function App() {
   }, [currentUser]);
 
   const [showAdminPanel, setShowAdminPanel] = useState(false);
-  const [showAIChat, setShowAIChat] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -773,16 +772,7 @@ export default function App() {
           setCurrentUser={setCurrentUser}
         />
       )}
-      {showAIChat && (
-        <div className="fixed inset-0 z-[998] bg-stone-950/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={(e) => { if(e.target === e.currentTarget) setShowAIChat(false); }}>
-          <div className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setShowAIChat(false)} className="absolute top-0 right-0 -mt-4 -mr-2 z-10 bg-white border-2 border-stone-200 rounded-full p-2 text-stone-500 hover:text-stone-900 hover:border-stone-400 transition-all cursor-pointer shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-            <AIAssistant courses={courses} />
-          </div>
-        </div>
-      )}
+      {/* AI moved to tab navigation */}
       {/* Global Brand Header banner */}
       <nav id="branded-top-bar" className="bg-white border-b-2 border-stone-200 sticky top-0 z-30">
         <div className="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -816,14 +806,6 @@ export default function App() {
               Sign Out
             </button>
 
-            {/* AI NAV BUTTON — always visible */}
-            <button
-              onClick={() => setShowAIChat(p => !p)}
-              className="flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-yellow-600 to-fuchsia-600 text-white rounded-xl text-[11px] font-black uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer font-mono border border-yellow-500/50 w-full sm:w-auto justify-center"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-              Mayor / Buggy AI
-            </button>
           </div>
         </div>
       </nav>
@@ -839,50 +821,59 @@ export default function App() {
 
         {/* Tab navigation indicators (Instructors get Timetables options) */}
         {userRole === 'instructor' && (
-          <div className="flex border-b-2 border-stone-200 gap-6 overflow-x-auto pb-px">
+          <div className="fixed bottom-0 left-0 right-0 md:relative md:bottom-auto bg-white border-t-2 md:border-t-0 md:border-b-2 border-stone-200 flex justify-around md:justify-start gap-2 md:gap-6 px-2 py-2 md:py-0 md:px-0 z-40 pb-safe shadow-[0_-10px_20px_rgba(0,0,0,0.05)] md:shadow-none">
             <button
               onClick={() => setActiveTab('courses')}
-              className={`pb-3.5 text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
+              className={`flex-1 md:flex-none flex flex-col md:flex-row items-center gap-1 md:pb-3.5 pt-1 text-[10px] md:text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
                 activeTab === 'courses' ? 'text-yellow-950' : 'text-stone-400 hover:text-stone-700'
               }`}
             >
-              Class Courses Grid
+              <Layout className="w-5 h-5 md:hidden mb-1" />
+              <span className="hidden md:inline">Class Courses Grid</span>
+              <span className="md:hidden">Courses</span>
               {activeTab === 'courses' && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-900 rounded-full" />
+                <div className="absolute top-0 md:top-auto md:bottom-0 left-1/4 right-1/4 md:left-0 md:right-0 h-1 bg-yellow-900 rounded-full" />
               )}
             </button>
             <button
               onClick={() => setActiveTab('schedule')}
-              className={`pb-3.5 text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
+              className={`flex-1 md:flex-none flex flex-col md:flex-row items-center gap-1 md:pb-3.5 pt-1 text-[10px] md:text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
                 activeTab === 'schedule' ? 'text-yellow-950' : 'text-stone-400 hover:text-stone-700'
               }`}
             >
-              Timetable Calendar
+              <Clock className="w-5 h-5 md:hidden mb-1" />
+              <span className="hidden md:inline">Timetable Calendar</span>
+              <span className="md:hidden">Schedule</span>
               {activeTab === 'schedule' && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-900 rounded-full" />
+                <div className="absolute top-0 md:top-auto md:bottom-0 left-1/4 right-1/4 md:left-0 md:right-0 h-1 bg-yellow-900 rounded-full" />
               )}
             </button>
             <button
               onClick={() => setActiveTab('students')}
-              className={`pb-3.5 text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
+              className={`flex-1 md:flex-none flex flex-col md:flex-row items-center gap-1 md:pb-3.5 pt-1 text-[10px] md:text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
                 activeTab === 'students' ? 'text-yellow-950' : 'text-stone-400 hover:text-stone-700'
               }`}
             >
-              Attendance Takers Log
+              <Users className="w-5 h-5 md:hidden mb-1" />
+              <span className="hidden md:inline">Attendance Takers Log</span>
+              <span className="md:hidden">Records</span>
               {activeTab === 'students' && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-900 rounded-full" />
+                <div className="absolute top-0 md:top-auto md:bottom-0 left-1/4 right-1/4 md:left-0 md:right-0 h-1 bg-yellow-900 rounded-full" />
               )}
             </button>
             <button
               onClick={() => setActiveTab('ai')}
-              className={`pb-3.5 text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer flex items-center gap-1.5 ${
-                activeTab === 'ai' ? 'text-yellow-950' : 'text-stone-400 hover:text-stone-700'
+              className={`flex-1 md:flex-none flex flex-col md:flex-row items-center gap-1 md:pb-3.5 pt-1 text-[10px] md:text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
+                activeTab === 'ai' ? 'text-yellow-600 drop-shadow-md' : 'text-stone-400 hover:text-stone-700'
               }`}
             >
-              <Sparkles className={`w-3.5 h-3.5 ${activeTab === 'ai' ? 'text-yellow-600' : 'text-stone-400'}`} />
-              AI Copilot
+              <div className={`p-1.5 rounded-full ${activeTab === 'ai' ? 'bg-yellow-100' : ''}`}>
+                <Sparkles className={`w-5 h-5 md:w-3.5 md:h-3.5 ${activeTab === 'ai' ? 'text-yellow-600 animate-pulse' : 'text-stone-400'}`} />
+              </div>
+              <span className="hidden md:inline">AI Copilot</span>
+              <span className="md:hidden">AI</span>
               {activeTab === 'ai' && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-900 rounded-full" />
+                <div className="absolute top-0 md:top-auto md:bottom-0 left-1/4 right-1/4 md:left-0 md:right-0 h-1 bg-yellow-900 rounded-full" />
               )}
             </button>
           </div>
