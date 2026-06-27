@@ -174,7 +174,7 @@ export default function App() {
       courseName: `${session.courseCode} • ${session.courseName}`
     };
   };
-  const [activeTab, setActiveTab] = useState<'courses' | 'schedule' | 'students'>('courses');
+  const [activeTab, setActiveTab] = useState<'courses' | 'schedule' | 'students' | 'ai'>('courses');
   
   // Authenticated state configurations
   const [currentUser, setCurrentUser] = useState<AppUser | null>(() => {
@@ -879,13 +879,36 @@ export default function App() {
           </div>
         )}
 
+        {/* AI tab navigation — visible to all users (instructors and students) */}
+        {userRole === 'student' && (
+          <div className="fixed bottom-0 left-0 right-0 md:relative md:bottom-auto bg-white border-t-2 md:border-t-0 md:border-b-2 border-stone-200 flex justify-around md:justify-start gap-2 md:gap-6 px-2 py-2 md:py-0 md:px-0 z-40 pb-safe shadow-[0_-10px_20px_rgba(0,0,0,0.05)] md:shadow-none">
+            <button
+              onClick={() => setActiveTab('ai')}
+              className={`flex-1 md:flex-none flex flex-col md:flex-row items-center gap-1 md:pb-3.5 pt-1 text-[10px] md:text-xs font-black tracking-wider uppercase transition-colors relative cursor-pointer ${
+                activeTab === 'ai' ? 'text-yellow-600 drop-shadow-md' : 'text-stone-400 hover:text-stone-700'
+              }`}
+            >
+              <div className={`p-1.5 rounded-full ${activeTab === 'ai' ? 'bg-yellow-100' : ''}`}>
+                <Sparkles className={`w-5 h-5 md:w-3.5 md:h-3.5 ${activeTab === 'ai' ? 'text-yellow-600 animate-pulse' : 'text-stone-400'}`} />
+              </div>
+              <span className="hidden md:inline">AI Copilot</span>
+              <span className="md:hidden">AI</span>
+              {activeTab === 'ai' && (
+                <div className="absolute top-0 md:top-auto md:bottom-0 left-1/4 right-1/4 md:left-0 md:right-0 h-1 bg-yellow-900 rounded-full" />
+              )}
+            </button>
+          </div>
+        )}
+
+        {/* AI Assistant — rendered for all users when AI tab is active */}
+        {activeTab === 'ai' && <AIAssistant courses={courses} />}
+
         {/* main switch board */}
         {userRole === 'instructor' ? (
           /* ========================================================
              INSTRUCTOR PANELS
              ======================================================== */
           <>
-            {activeTab === 'ai' && <AIAssistant courses={courses} />}
             
             {activeTab === 'courses' && (
               <div className="space-y-6">
