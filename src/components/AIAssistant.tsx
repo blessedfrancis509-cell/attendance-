@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Course } from '../types';
-import { Sparkles, Bot, Send, BrainCircuit, Activity, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Sparkles, Bot, Send, BrainCircuit, Activity, TrendingUp, AlertTriangle, Shield, Zap, User } from 'lucide-react';
 
 interface AIAssistantProps {
   courses: Course[];
@@ -233,25 +233,42 @@ Answer the user's latest query accurately. If they ask about the app data, use t
 
         <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-5 bg-stone-50/30 scroll-smooth pb-20">
           {messages.map(msg => (
-            <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in`}>
+            <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2 animate-fade-in`}>
+              {msg.role === 'ai' && (
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm border ${
+                  aiModel === 'mayor' ? 'bg-yellow-100 text-yellow-600 border-yellow-200' : 'bg-fuchsia-100 text-fuchsia-500 border-fuchsia-200'
+                }`}>
+                  {aiModel === 'mayor' ? <Shield className="w-4 h-4" /> : <Zap className="w-4 h-4" />}
+                </div>
+              )}
               <div className={`max-w-[85%] rounded-3xl p-4 text-[13px] font-medium leading-relaxed font-sans shadow-sm ${
                 msg.role === 'user' 
                   ? 'bg-stone-800 text-white rounded-br-sm'
-                  : (aiModel === 'mayor' ? 'bg-white border border-stone-200/60 rounded-bl-sm' : 'bg-fuchsia-50 border border-fuchsia-100 rounded-bl-sm')
+                  : (aiModel === 'mayor' ? 'bg-white border border-stone-200/60 rounded-tl-sm' : 'bg-fuchsia-50 border border-fuchsia-100 rounded-tl-sm')
               }`}>
                 {msg.text.split('\n').map((line, i) => (
                   <p key={i} className="mb-2 last:mb-0">{line}</p>
                 ))}
               </div>
+              {msg.role === 'user' && (
+                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm border bg-stone-100 border-stone-200 text-stone-500">
+                  <User className="w-4 h-4" />
+                </div>
+              )}
             </div>
           ))}
 
           {isTyping && (
-            <div className="flex justify-start animate-fade-in">
-              <div className="bg-white border border-stone-200/60 rounded-3xl rounded-bl-sm p-4 flex gap-1.5 items-center shadow-sm">
-                <span className="w-2 h-2 bg-stone-400 rounded-full animate-bounce"></span>
-                <span className="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
-                <span className="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
+            <div className="flex justify-start gap-2 animate-fade-in">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm border animate-pulse ${
+                aiModel === 'mayor' ? 'bg-yellow-100 text-yellow-600 border-yellow-200' : 'bg-fuchsia-100 text-fuchsia-500 border-fuchsia-200'
+              }`}>
+                {aiModel === 'mayor' ? <Shield className="w-4 h-4" /> : <Zap className="w-4 h-4" />}
+              </div>
+              <div className="bg-white border border-stone-200/60 rounded-3xl rounded-tl-sm p-4 flex gap-1.5 items-center shadow-sm h-12">
+                <span className={`w-2 h-2 rounded-full animate-bounce ${aiModel === 'mayor' ? 'bg-yellow-500' : 'bg-fuchsia-400'}`}></span>
+                <span className={`w-2 h-2 rounded-full animate-bounce ${aiModel === 'mayor' ? 'bg-yellow-500' : 'bg-fuchsia-400'}`} style={{animationDelay: '150ms'}}></span>
+                <span className={`w-2 h-2 rounded-full animate-bounce ${aiModel === 'mayor' ? 'bg-yellow-500' : 'bg-fuchsia-400'}`} style={{animationDelay: '300ms'}}></span>
               </div>
             </div>
           )}
