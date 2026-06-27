@@ -184,7 +184,7 @@ Answer the user's latest query accurately. If they ask about the app data, use t
 
           <div className="space-y-3 relative z-10">
             {initialInsights.map((insight, idx) => (
-              <div key={idx} className={`p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/40 shadow-xs animate-slide-up`} style={{ animationDelay: \`\${idx * 150}ms\` }}>
+              <div key={idx} className={`p-4 rounded-2xl bg-white/60 backdrop-blur-md border border-white/40 shadow-xs animate-slide-up`} style={{ animationDelay: `${idx * 150}ms` }}>
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="p-1.5 bg-white rounded-lg shadow-sm">{insight.icon}</span>
                   <h4 className="font-extrabold text-xs uppercase tracking-wider">{insight.title}</h4>
