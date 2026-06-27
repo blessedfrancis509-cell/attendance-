@@ -175,7 +175,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
       <div className="fixed inset-0 flex flex-col items-center justify-center z-50 touch-none" style={{ background: 'linear-gradient(-45deg, #422006, #713f12, #422006)', backgroundSize: '200% 200%', animation: 'gradient-shift 4s ease infinite' }}>
         <div className="flex flex-col items-center gap-6 animate-pulse-glow">
           <div className="p-6 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20">
-            <img src="/icon.png" alt="Auchi Poly Logo" className="w-20 h-20 object-contain drop-shadow-[0_0_20px_rgba(250,204,21,0.5)] animate-float" />
+            <img src="/icon.png" alt="Auchi Poly Logo" className="w-20 h-20 object-cover rounded-full drop-shadow-[0_0_20px_rgba(250,204,21,0.5)] animate-float border-2 border-white/50" />
           </div>
           <h1 className="text-2xl font-black text-yellow-400 tracking-widest uppercase font-mono drop-shadow-md animate-fade-in text-center max-w-[250px] leading-relaxed">
             Auchi Poly<br/>Class Flow
@@ -193,7 +193,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
         <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/20 rounded-full blur-[100px] pointer-events-none animate-pulse-glow" />
         <div className="absolute top-20 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-[80px] pointer-events-none animate-float" />
         <div className="mb-4 animate-float" style={{ animationDelay: '1s' }}>
-          <img src="/icon.png" alt="Auchi Poly Logo" className="w-24 h-24 object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.6)]" />
+          <img src="/icon.png" alt="Auchi Poly Logo" className="w-24 h-24 object-cover rounded-full drop-shadow-[0_0_30px_rgba(250,204,21,0.6)] border-4 border-yellow-500/30" />
         </div>
         <h1 className="text-3xl font-black text-white mb-2 font-mono uppercase tracking-wider">Auchi Poly Class Flow</h1>
         <p className="text-yellow-200 text-sm max-w-[280px] font-medium opacity-90 drop-shadow">

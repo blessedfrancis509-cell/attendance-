@@ -778,7 +778,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <span className="p-1 flex items-center justify-center">
-              <img src="/icon.png" alt="Auchi Polytechnic Logo" className="w-10 h-10 object-contain drop-shadow-sm" />
+              <img src="/icon.png" alt="Auchi Polytechnic Logo" className="w-10 h-10 object-cover rounded-full drop-shadow-sm border-2 border-white/80" />
             </span>
             <div>
               <span className="text-[9px] font-black text-yellow-600 uppercase tracking-widest font-mono">Auchi Polytechnic</span>
